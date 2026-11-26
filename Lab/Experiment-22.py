@@ -1,0 +1,15 @@
+import cv2
+import numpy as np
+img = np.zeros((400, 600), dtype=np.uint8)
+cv2.rectangle(img, (80, 100), (280, 300), 255, -1)
+cv2.circle(img, (180, 200), 15, 0, -1)
+cv2.rectangle(img, (150, 95), (190, 110), 0, -1)
+cv2.circle(img, (450, 200), 100, 255, -1)
+cv2.circle(img, (450, 200), 15, 0, -1)
+kernel = np.ones((35, 35), np.uint8)
+result = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
+cv2.imshow("Original Binary Image", img)
+cv2.imshow("After Morphological Closing", result)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+print("Morphological closing completed successfully")
